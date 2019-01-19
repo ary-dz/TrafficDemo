@@ -54,6 +54,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
        PopupWindow popupWindow;
         LinearLayout linearLayout1;
 
+        Handler handler = new Handler();
+        int delay = 5000;
+
 
 
         @Override
@@ -195,6 +198,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 //getScreenShot(rootView);
                 //CaptureMapScreen(mMap);
 
+                handler.postDelayed(new Runnable(){
+                        public void run(){
 
                 mMap.setOnMapLoadedCallback(new GoogleMap.OnMapLoadedCallback() {
                         public void onMapLoaded() {
@@ -214,6 +219,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                                 });
                         }
                 });
+                                handler.postDelayed(this, delay);  }
+                }, delay);
+
         }
 
         /******************* Image Processing Code *****/
