@@ -1,7 +1,17 @@
 package com.example.trafficdemo;
-
-
-
+import java.lang.*;
+import java.util.*;
+import android.content.Context;
+import android.os.Handler;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 
 import android.Manifest;
 import android.app.Activity;
@@ -22,6 +32,8 @@ import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
 import android.os.Environment;
+import android.widget.TextView;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -37,6 +49,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         public int W = 1;
         public int S = 2;
         public int E = 3;
+        public String values;
+        Button showPopupBtn, closePopupBtn;
+       PopupWindow popupWindow;
+        LinearLayout linearLayout1;
+
+
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +64,37 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                         .findFragmentById(R.id.map);
                 mapFragment.getMapAsync(this);
+
+
+                showPopupBtn = (Button) findViewById(R.id.showPopupBtn);
+                linearLayout1 = (LinearLayout) findViewById(R.id.linearLayout1);
+
+                showPopupBtn.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                                //instantiate the popup.xml layout file
+                                LayoutInflater layoutInflater = (LayoutInflater) MapsActivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                                View customView = layoutInflater.inflate(R.layout.popup,null);
+
+                                closePopupBtn = (Button) customView.findViewById(R.id.closePopupBtn);
+
+                                //instantiate popup window
+                                popupWindow  = new PopupWindow(customView, LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+                                ((TextView)popupWindow.getContentView().findViewById(R.id.TextView01)).setText(values);
+                                //display the popup window
+                                popupWindow.showAtLocation(linearLayout1, Gravity.CENTER, 0, 0);
+
+
+                                //close the popup window on button click
+                                closePopupBtn.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                                popupWindow.dismiss();
+                                        }
+                                });
+
+                        }
+                });
 
 
         }
@@ -145,6 +194,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 //View rootView = getWindow().getDecorView().findViewById(android.R.id.content);
                 //getScreenShot(rootView);
                 //CaptureMapScreen(mMap);
+
+
                 mMap.setOnMapLoadedCallback(new GoogleMap.OnMapLoadedCallback() {
                         public void onMapLoaded() {
                                 mMap.snapshot(new GoogleMap.SnapshotReadyCallback() {
@@ -210,45 +261,45 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
 
         public float AnalyzeRoad(Bitmap bitmap, int xs, int xe, int ys, int ye) {
-                int xni1 = 572;  //638
-                int yni1 = 830;  //417
-                int xni2 = 756;  //638
-                int yni2 = 366;
+                int xni1 = 573;  //638
+                int yni1 = 766;  //417
+                int xni2 = 721;  //638
+                int yni2 = 392;
                 //
-                int xno1 = 590;  //638
-                int yno1 = 716;  //417
-                int xno2 = 708;  //638
-                int yno2 = 429;
+                int xno1 = 575;  //638
+                int yno1 = 700;  //417
+                int xno2 = 699;  //638
+                int yno2 = 385;
                 //
-                int xwi1 = 487;  //638
-                int ywi1 = 836;  //417
-                int xwi2 = 150;  //638
-                int ywi2 = 715;
+                int xwi1 = 498;  //638
+                int ywi1 = 778;  //417
+                int xwi2 = 154;  //638
+                int ywi2 = 654;
                 //
-                int xwo1 = 514;  //638
-                int ywo1 = 865;  //417
-                int xwo2 = 145;  //638
-                int ywo2 = 735;
+                int xwo1 = 505;  //638
+                int ywo1 = 801;  //417
+                int xwo2 = 148;  //638
+                int ywo2 = 673;
                 //
-                int xsi1 = 530;  //638
-                int ysi1 = 887;  //417
-                int xsi2 = 420;  //638
-                int ysi2 = 1445;
+                int xsi1 = 529;  //638
+                int ysi1 = 835;  //417
+                int xsi2 = 468;  //638
+                int ysi2 = 1130;
                 //
-                int xso1 = 544;  //638
-                int yso1 = 909;  //417
-                int xso2 = 458;  //638
-                int yso2 = 1347;
+                int xso1 = 551;  //638
+                int yso1 = 828;  //417
+                int xso2 = 490;  //638
+                int yso2 = 1135;
                 //
-                int xei1 = 579;  //638
-                int yei1 = 877;  //417
-                int xei2 = 1076;  //638
-                int yei2 = 986;
+                int xei1 = 581;  //638
+                int yei1 = 815;  //417
+                int xei2 = 822;  //638
+                int yei2 = 884;
                 //
-                int xeo1 = 674;  //638
-                int yeo1 = 869;  //417
-                int xeo2 = 1034;  //638
-                int yeo2 = 971;
+                int xeo1 = 585;  //638
+                int yeo1 = 796;  //417
+                int xeo2 = 796;  //638
+                int yeo2 = 849;
                 //
                 int height = bitmap.getHeight();
                 int width = bitmap.getWidth();
@@ -264,18 +315,37 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 Log.d(MyTag, "northin: " + northinCC + " northout: " + northoutCC + "southin: " + southinCC );
                 Log.d(MyTag, "southout: " + southoutCC + "westin: " + westinCC + "westout: " + westoutCC );
                 Log.d(MyTag, "eastin: " + eastinCC + "eastout: " + eastoutCC );
-                double northvalue = northinCC - ((southoutCC+westoutCC+eastoutCC)/3);
-                double southvalue = southinCC - ((northoutCC+westoutCC+eastoutCC)/3);
-                double eastvalue = eastinCC - ((southoutCC+westoutCC+northoutCC)/3);
-                double westvalue = westinCC - ((southoutCC+northoutCC+eastoutCC)/3);
+                double northvalue = Math.abs((northinCC - ((southoutCC+westoutCC+eastoutCC)/3))*100);
+                double southvalue = Math.abs((southinCC - ((northoutCC+westoutCC+eastoutCC)/3))*100);
+                double eastvalue = Math.abs((eastinCC - ((southoutCC+westoutCC+northoutCC)/3))*100);
+                double westvalue = Math.abs((westinCC - ((southoutCC+northoutCC+eastoutCC)/3))*100);
                 Log.d(MyTag, "North is: " + northvalue + " South is: " + southvalue + " East is: " + eastvalue + " West is: " + westvalue);
                 double total = northvalue+eastvalue+southvalue+westvalue;
                 double southtiming = (southvalue/total)*240;
+                southtiming = (double)Math.round(southtiming * 1d) / 1d;
+                if (southtiming<=30) {
+                        southtiming = 30;
+                }
+
                 double northtiming = (northvalue/total)*240;
+                northtiming = (double)Math.round(northtiming * 1d) / 1d;
+                if (northtiming<=30) {
+                        northtiming = 30;
+                }
                 double westtiming = (westvalue/total)*240;
+                westtiming = (double)Math.round(westtiming * 1d) / 1d;
+                if (westtiming<=30) {
+                        westtiming = 30;
+                }
                 double easttiming = (eastvalue/total)*240;
+                easttiming = (double)Math.round(easttiming * 1d) / 1d;
+                if (easttiming<=30) {
+                        easttiming = 30;
+                }
                 Log.d(MyTag, "south timing is " + southtiming + " north timing is " + northtiming + "west timing is " + westtiming + "east timing is " + easttiming);
-                /* Log.d(MyTag, "width = " + width + " height = " + height);
+                values = "south timing is " + southtiming + " \n north timing is " + northtiming + "\nwest timing is " + westtiming + "\neast timing is " + easttiming;
+                /*
+        Log.d(MyTag, "width = " + width + " height = " + height);
                 int pixelni1 = bitmap.getPixel(xni1,yni1);
                 int pixelni2= bitmap.getPixel(xni2,yni2);
                 int greenValueni1 = Color.green(pixelni1);
