@@ -83,6 +83,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
                                 //instantiate popup window
                                 popupWindow  = new PopupWindow(customView, LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+                                popupWindow.setHeight(650);
+                                popupWindow.setWidth(650);
                                 ((TextView)popupWindow.getContentView().findViewById(R.id.TextView01)).setText(values);
                                 //display the popup window
                                 popupWindow.showAtLocation(linearLayout1, Gravity.CENTER, 0, 0);
@@ -398,8 +400,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 if (easttiming<=30) {
                         easttiming = 30;
                 }
-                Log.d(MyTag, "south timing is " + southtiming + " north timing is " + northtiming + "west timing is " + westtiming + "east timing is " + easttiming);
-                values = "south timing is " + southtiming + " \n north timing is " + northtiming + "\nwest timing is " + westtiming + "\neast timing is " + easttiming;
+                Log.d(MyTag, "South Timing is: " + southtiming + "North timing is: " + northtiming + "west timing is " + westtiming + "east timing is " + easttiming);
+                values = "North Timing is: " + northtiming + "\nSouth Timing is: " + southtiming + "\nWest Timing is: " + westtiming + "\nEast Timing is: " + easttiming;
                 /*
         Log.d(MyTag, "width = " + width + " height = " + height);
                 int pixelni1 = bitmap.getPixel(xni1,yni1);

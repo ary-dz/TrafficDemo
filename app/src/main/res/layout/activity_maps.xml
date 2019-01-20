@@ -10,7 +10,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Show Popup Window"
+        android:text="Get Recommended Timings"
         android:id="@+id/showPopupBtn"/>
 
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"
