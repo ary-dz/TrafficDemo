@@ -257,13 +257,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 return (green);
         }
 
-        public double colourScale(Bitmap bitmap, int xd1, int yd1, int xd2, int yd2){
+        public double colourScale(Bitmap bitmap, int xd1, int yd1, int xd2, int yd2, int xd3, int yd3, int xd4, int yd4){
                 int pixeld1 = bitmap.getPixel(xd1,yd1);
                 int pixeld2= bitmap.getPixel(xd2,yd2);
+                int pixeld3= bitmap.getPixel(xd3,yd3);
+                int pixeld4= bitmap.getPixel(xd4,yd4);
                 int greenValueni1 = Color.green(pixeld1);
                 int greenValueni2 = Color.green(pixeld2);
+                int greenValueni3 = Color.green(pixeld3);
+                int greenValueni4 = Color.green(pixeld4);
                 float colourScaled = 0.0f;
-                colourScaled = (((255-greenValueni1)/255.0f) + ((255-greenValueni2)/255.0f))/2 ;
+                colourScaled = (((255-greenValueni1)/255.0f) + ((255-greenValueni2)/255.0f) + ((255-greenValueni3)/255.0f) + ((255-greenValueni4)/255.0f))/4 ;
                 Log.d(MyTag, "The color scale generated is:" + colourScaled);
                 return colourScaled;
         }
@@ -273,53 +277,87 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 int yni1 = 766;  //417
                 int xni2 = 721;  //638
                 int yni2 = 392;
+                int xni3 = 663;  //638
+                int yni3 = 537;
+                int xni4 = 697;  //638
+                int yni4 = 453;
+
                 //
                 int xno1 = 575;  //638
                 int yno1 = 700;  //417
                 int xno2 = 699;  //638
                 int yno2 = 385;
+                int xno3 = 627;  //638
+                int yno3 = 567;
+                int xno4 = 674;  //638
+                int yno4 = 448;
                 //
                 int xwi1 = 498;  //638
                 int ywi1 = 778;  //417
                 int xwi2 = 154;  //638
                 int ywi2 = 654;
+                int xwi3 = 407;  //638
+                int ywi3 = 745;
+                int xwi4 = 312;  //638
+                int ywi4 = 711;
+
                 //
                 int xwo1 = 505;  //638
                 int ywo1 = 801;  //417
                 int xwo2 = 148;  //638
                 int ywo2 = 673;
+                int xwo3 = 399;  //638
+                int ywo3 = 765;
+                int xwo4 = 308;  //638
+                int ywo4 = 732;
                 //
                 int xsi1 = 529;  //638
                 int ysi1 = 835;  //417
                 int xsi2 = 468;  //638
                 int ysi2 = 1130;
+                int xsi3 = 515;  //638
+                int ysi3 = 888;
+                int xsi4 = 492;  //638
+                int ysi4 = 1004;
                 //
                 int xso1 = 551;  //638
                 int yso1 = 828;  //417
                 int xso2 = 490;  //638
                 int yso2 = 1135;
+                int xso3 = 535;  //638
+                int yso3 = 893;
+                int xso4 = 510;  //638
+                int yso4 = 1011;
                 //
                 int xei1 = 581;  //638
                 int yei1 = 815;  //417
                 int xei2 = 822;  //638
                 int yei2 = 884;
+                int xei3 = 701;  //638
+                int yei3 = 835;
+                int xei4 = 808;  //638
+                int yei4 = 879;
                 //
                 int xeo1 = 585;  //638
                 int yeo1 = 796;  //417
                 int xeo2 = 796;  //638
                 int yeo2 = 849;
+                int xeo3 = 702;  //638
+                int yeo3 = 810;
+                int xeo4 = 800;  //638
+                int yeo4 = 852;
                 //
                 int height = bitmap.getHeight();
                 int width = bitmap.getWidth();
 
-                double northinCC = colourScale(bitmap, xni1, yni1, xni2, yni2);
-                double northoutCC = colourScale(bitmap, xno1, yno1, xno2, yno2);
-                double southinCC = colourScale(bitmap, xsi1, ysi1, xsi2, ysi2);
-                double southoutCC = colourScale(bitmap, xso1, yso1, xso2, yso2);
-                double westinCC = colourScale(bitmap, xwi1, ywi1, xwi2, ywi2);
-                double westoutCC = colourScale(bitmap, xwo1, ywo1, xwo2, ywo2);
-                double eastinCC = colourScale(bitmap, xei1, yei1, xei2, yei2);
-                double eastoutCC = colourScale(bitmap, xeo1, yeo1, xeo2, yeo2);
+                double northinCC = colourScale(bitmap, xni1, yni1, xni2, yni2, xni3, yni3, xni4, yni4);
+                double northoutCC = colourScale(bitmap, xno1, yno1, xno2, yno2, xno3, yno3, xno4, yno4);
+                double southinCC = colourScale(bitmap, xsi1, ysi1, xsi2, ysi2, xsi3, ysi3, xsi4, ysi4);
+                double southoutCC = colourScale(bitmap, xso1, yso1, xso2, yso2, xso3, yso3, xso4, yso4);
+                double westinCC = colourScale(bitmap, xwi1, ywi1, xwi2, ywi2, xwi3, ywi3, xwi4, ywi4);
+                double westoutCC = colourScale(bitmap, xwo1, ywo1, xwo2, ywo2, xwo3, ywo3, xwo4, ywo4);
+                double eastinCC = colourScale(bitmap, xei1, yei1, xei2, yei2, xei3, yei3, xei4, yei4);
+                double eastoutCC = colourScale(bitmap, xeo1, yeo1, xeo2, yeo2, xeo3, xeo3, xeo4, yeo4);
                 Log.d(MyTag, "northin: " + northinCC + " northout: " + northoutCC + "southin: " + southinCC );
                 Log.d(MyTag, "southout: " + southoutCC + "westin: " + westinCC + "westout: " + westoutCC );
                 Log.d(MyTag, "eastin: " + eastinCC + "eastout: " + eastoutCC );
@@ -329,6 +367,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 double westvalue = Math.abs((westinCC - ((southoutCC+northoutCC+eastoutCC)/3))*100);
                 Log.d(MyTag, "North is: " + northvalue + " South is: " + southvalue + " East is: " + eastvalue + " West is: " + westvalue);
                 double total = northvalue+eastvalue+southvalue+westvalue;
+                if (total==0) {
+                        total = 0.01;
+                }
                 double southtiming = (southvalue/total)*240;
                 southtiming = (double)Math.round(southtiming * 1d) / 1d;
                 if (southtiming<=30) {
