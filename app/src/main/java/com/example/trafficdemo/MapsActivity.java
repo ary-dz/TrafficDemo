@@ -201,6 +201,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 handler.postDelayed(new Runnable(){
                         public void run(){
 
+                                LatLng hopefarm = new LatLng(12.9837667, 77.7523578);
+                                mMap.addMarker(new MarkerOptions().position(hopefarm).title("Marker in Hopefarm"));
+                                mMap.moveCamera(CameraUpdateFactory.newLatLng(hopefarm));
+                                mMap.setMaxZoomPreference((float) 15.5);
+                                mMap.setMinZoomPreference((float)15.5);
+                                mMap.setTrafficEnabled(true);
+
                 mMap.setOnMapLoadedCallback(new GoogleMap.OnMapLoadedCallback() {
                         public void onMapLoaded() {
                                 mMap.snapshot(new GoogleMap.SnapshotReadyCallback() {
